@@ -1,27 +1,36 @@
 package com.dashingqi.dqcompose
 
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.ComposeCompilerApi
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.dashingqi.dqcompose.ui.theme.DQComposeTheme
+import kotlinx.coroutines.launch
+
+private const val TAG = "MainActivity"
 
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             DQComposeTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
-                    Greeting("Android")
+                  UseSnackBar()
                 }
             }
         }
@@ -125,6 +134,88 @@ fun UseButton() {
         )
         Spacer(modifier = Modifier.size(ButtonDefaults.IconSpacing))
         Text(text = "Like")
+
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun UseExtendedFloatingActionButton() {
+    ExtendedFloatingActionButton(
+        text = { Text(text = "Like") },
+        onClick = {},
+        icon = {
+            Icon(
+                Icons.Filled.Favorite,
+                contentDescription = "Favorite"
+            )
+        })
+}
+
+@Preview(showBackground = true)
+@Composable
+fun UseScaffold() {
+    Scaffold(topBar = {
+        TopAppBar {
+
+        }
+    }, bottomBar = {
+        BottomAppBar(
+            cutoutShape = MaterialTheme.shapes.small.copy(
+                CornerSize(percent = 50)
+            )
+        ) {
+
+        }
+    }, floatingActionButton = {
+        FloatingActionButton(onClick = { /*TODO*/ }) {
+            Text(text = "FAB")
+        }
+    }, floatingActionButtonPosition = FabPosition.Center,
+        isFloatingActionButtonDocked = true
+    ) {
+        Column {
+            UseExtendedFloatingActionButton()
+            UseButton()
+        }
+    }
+}
+
+
+@Preview(showBackground = true)
+@Composable
+fun UseSnackBar() {
+    val scaffoldState = rememberScaffoldState()
+    val scope = rememberCoroutineScope()
+    Scaffold(
+        scaffoldState = scaffoldState,
+        floatingActionButton = {
+            ExtendedFloatingActionButton(
+                text = { Text(text = "show snackBar") },
+                onClick = {
+                    scope.launch {
+                        val result = scaffoldState.snackbarHostState.showSnackbar(
+                            message = "SnackBar",
+                            actionLabel = "Action",
+                            duration = SnackbarDuration.Indefinite
+                        )
+
+                        when (result) {
+                            SnackbarResult.ActionPerformed -> {
+                                Log.d(TAG, "UseSnackBar: ActionPerformed")
+
+                            }
+                            SnackbarResult.Dismissed -> {
+                                Log.d(TAG, "UseSnackBar: Dismissed")
+                            }
+                        }
+                    }
+                })
+        },
+        drawerContent = {
+
+        }
+    ) {
 
     }
 }
