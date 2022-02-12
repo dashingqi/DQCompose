@@ -2,7 +2,6 @@ package com.dashingqi.dqcompose
 
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
@@ -21,7 +20,6 @@ import com.dashingqi.dqcompose.ui.theme.DQComposeTheme
 import kotlinx.coroutines.launch
 
 private const val TAG = "MainActivity"
-
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,6 +29,9 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
                   UseSnackBar()
+
+                    UseButton()
+
                 }
             }
         }
@@ -118,7 +119,10 @@ fun UseBoxWithConstraints() {
 fun UseButton() {
 
     Button(
-        onClick = { /*TODO*/ },
+        modifier = Modifier.fillMaxWidth(),
+        onClick = {
+            Log.d(TAG, "click like button");
+        },
         contentPadding = PaddingValues(
             start = 20.dp,
             top = 12.dp,
