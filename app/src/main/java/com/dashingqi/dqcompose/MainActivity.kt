@@ -3,6 +3,7 @@ package com.dashingqi.dqcompose
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
@@ -115,5 +116,4 @@ private fun decoupledConstraints(margin: Dp): ConstraintSet {
             end.linkTo(button.end)
         }
     }
-
 }
