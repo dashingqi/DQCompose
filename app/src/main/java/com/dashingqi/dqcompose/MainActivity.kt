@@ -27,12 +27,8 @@ class MainActivity : ComponentActivity() {
             MessageCard(name = "My Android")
             DQComposeTheme {
                 Surface(color = MaterialTheme.colors.background) {
-<<<<<<< HEAD
-
-=======
-//                    Greeting("Android")
                     TabRowSample()
->>>>>>> [TabRow的使用]
+
                 }
             }
         }
