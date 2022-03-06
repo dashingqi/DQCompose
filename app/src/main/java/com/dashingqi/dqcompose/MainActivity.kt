@@ -17,6 +17,7 @@ import androidx.compose.material.Surface
 
 import androidx.compose.ui.unit.dp
 import com.dashingqi.dqcompose.ui.theme.DQComposeTheme
+import com.dashingqi.dqcompose.widget.TabRowSample
 
 
 class MainActivity : ComponentActivity() {
@@ -26,7 +27,12 @@ class MainActivity : ComponentActivity() {
             MessageCard(name = "My Android")
             DQComposeTheme {
                 Surface(color = MaterialTheme.colors.background) {
+<<<<<<< HEAD
 
+=======
+//                    Greeting("Android")
+                    TabRowSample()
+>>>>>>> [TabRow的使用]
                 }
             }
         }
