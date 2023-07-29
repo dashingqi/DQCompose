@@ -18,18 +18,16 @@ import androidx.compose.material.Surface
 import androidx.compose.ui.unit.dp
 import com.dashingqi.dqcompose.ui.theme.DQComposeTheme
 import com.dashingqi.dqcompose.widget.TabRowSample
+import com.dashingqi.dqcompose.widget.TextSample
 
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MessageCard(name = "My Android")
+//            MessageCard(name = "My Android")
             DQComposeTheme {
-                Surface(color = MaterialTheme.colors.background) {
-                    TabRowSample()
-
-                }
+                TextSample()
             }
         }
     }
