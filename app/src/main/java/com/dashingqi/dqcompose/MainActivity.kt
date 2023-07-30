@@ -18,6 +18,8 @@ import androidx.compose.material.Surface
 
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModelProvider
+import com.dashingqi.dqcompose.layout.BoxSample
+import com.dashingqi.dqcompose.layout.CardSample
 import com.dashingqi.dqcompose.ui.theme.DQComposeTheme
 import com.dashingqi.dqcompose.widget.ButtonSample
 import com.dashingqi.dqcompose.widget.ModifierSample
@@ -35,7 +37,7 @@ class MainActivity : ComponentActivity() {
         setContent {
 //            MessageCard(name = "My Android")
             DQComposeTheme {
-                StateWithLiveDataSample(viewModel)
+                BoxSample()
             }
         }
     }
