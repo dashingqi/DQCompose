@@ -20,10 +20,13 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModelProvider
 import com.dashingqi.dqcompose.layout.BoxSample
 import com.dashingqi.dqcompose.layout.CardSample
+import com.dashingqi.dqcompose.layout.ListItemSample
 import com.dashingqi.dqcompose.ui.theme.DQComposeTheme
 import com.dashingqi.dqcompose.widget.ButtonSample
+import com.dashingqi.dqcompose.widget.CheckBoxSample
 import com.dashingqi.dqcompose.widget.ModifierSample
 import com.dashingqi.dqcompose.widget.MyViewModel
+import com.dashingqi.dqcompose.widget.RadioButtonSample
 import com.dashingqi.dqcompose.widget.StateSample
 import com.dashingqi.dqcompose.widget.StateWithLiveDataSample
 import com.dashingqi.dqcompose.widget.TabRowSample
@@ -37,7 +40,7 @@ class MainActivity : ComponentActivity() {
         setContent {
 //            MessageCard(name = "My Android")
             DQComposeTheme {
-                BoxSample()
+                ListItemSample()
             }
         }
     }
