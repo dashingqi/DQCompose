@@ -16,7 +16,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 @Composable
 fun BoxSample() {
@@ -31,14 +34,12 @@ fun BoxSample() {
 //            text = "zhangqi", modifier = Modifier
 //                .padding(7.dp)
 //                .background(Color.Yellow)
-//                .size(12.dp)
 //                .align(Alignment.Center)
 //        )
 //        Text(
 //            text = "dashingqi", modifier = Modifier
 //                .padding(7.dp)
-//                .background(Color.Green)
-//                .size(8.dp)
+//                .background(Color.Green), fontSize = 18F.sp
 //        )
 //    }
 
