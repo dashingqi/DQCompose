@@ -23,7 +23,7 @@ import com.dashingqi.dqcompose.widget.MyViewModel
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val viewModel = ViewModelProvider(this).get(MyViewModel::class.java)
+        val viewModel = ViewModelProvider(this)[MyViewModel::class.java]
         setContent {
 //            MessageCard(name = "My Android")
             DQComposeTheme {
