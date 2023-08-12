@@ -89,10 +89,7 @@ fun ScaffoldSampleOne() {
                     })
             }
         }
-    }
-
-
-    ) {
+    }) {
 
     }
 

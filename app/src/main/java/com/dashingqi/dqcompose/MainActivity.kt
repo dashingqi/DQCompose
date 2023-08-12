@@ -15,6 +15,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModelProvider
+import com.dashingqi.dqcompose.layout.ScaffoldSample
+import com.dashingqi.dqcompose.layout.ScaffoldSampleOne
 import com.dashingqi.dqcompose.ui.theme.DQComposeTheme
 import com.dashingqi.dqcompose.widget.DropDownMenuSample
 import com.dashingqi.dqcompose.widget.MyViewModel
@@ -27,7 +29,7 @@ class MainActivity : ComponentActivity() {
         setContent {
 //            MessageCard(name = "My Android")
             DQComposeTheme {
-                DropDownMenuSample()
+                ScaffoldSampleOne()
             }
         }
     }
