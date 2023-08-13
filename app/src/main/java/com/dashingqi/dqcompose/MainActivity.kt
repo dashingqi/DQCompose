@@ -17,6 +17,8 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModelProvider
 import com.dashingqi.dqcompose.layout.ScaffoldSample
 import com.dashingqi.dqcompose.layout.ScaffoldSampleOne
+import com.dashingqi.dqcompose.layout.ScaffoldSampleOut
+import com.dashingqi.dqcompose.layout.ScaffoldSampleThree
 import com.dashingqi.dqcompose.layout.ScaffoldSampleTwo
 import com.dashingqi.dqcompose.ui.theme.DQComposeTheme
 import com.dashingqi.dqcompose.widget.DropDownMenuSample
@@ -30,7 +32,7 @@ class MainActivity : ComponentActivity() {
         setContent {
 //            MessageCard(name = "My Android")
             DQComposeTheme {
-                ScaffoldSampleTwo()
+                ScaffoldSampleOut()
             }
         }
     }
