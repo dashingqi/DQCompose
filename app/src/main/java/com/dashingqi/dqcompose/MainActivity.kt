@@ -23,6 +23,7 @@ import com.dashingqi.dqcompose.layout.ScaffoldSampleTwo
 import com.dashingqi.dqcompose.ui.theme.DQComposeTheme
 import com.dashingqi.dqcompose.widget.DropDownMenuSample
 import com.dashingqi.dqcompose.widget.MyViewModel
+import com.dashingqi.dqcompose.widget.ShowDialogSample
 
 
 class MainActivity : ComponentActivity() {
@@ -32,7 +33,7 @@ class MainActivity : ComponentActivity() {
         setContent {
 //            MessageCard(name = "My Android")
             DQComposeTheme {
-                ScaffoldSampleOut()
+                ShowDialogSample()
             }
         }
     }
