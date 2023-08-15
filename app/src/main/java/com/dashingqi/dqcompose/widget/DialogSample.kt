@@ -76,7 +76,6 @@ fun DialogSamplePreview() {
     DialogSample()
 }
 
-
 @Composable
 fun ShowDialogSample() {
     DialogSample()
