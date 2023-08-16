@@ -17,9 +17,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 
 @Composable
 fun NavSample() {
@@ -28,18 +30,26 @@ fun NavSample() {
     NavHost(navController = navState, startDestination = "first") {
         composable(route = "first") {
             FirstScreen {
-                navState.navigate("second")
+                navState.navigate("second/dashing/27")
             }
         }
 
-        composable(route = "second") {
-            SecondScreen {
-                navState.navigate("third")
+        composable(route = "second/{name}/{age}", arguments = listOf(navArgument("age") {
+            type = NavType.IntType
+        })) {
+            val name = it.arguments?.getString("name")
+            val age = it.arguments?.getInt("age") ?: 18
+            SecondScreen(name, age) {
+                navState.navigate("third?=carName=")
             }
         }
 
-        composable(route = "third") {
-            ThirdScreen {
+        composable(route = "third?=carName={carName}", arguments = listOf(navArgument("carName") {
+            defaultValue = "BWA"
+            nullable = true
+        })) {
+            val carName = it.arguments?.getString("carName")
+            ThirdScreen(carName) {
                 navState.popBackStack("first", inclusive = false)
             }
         }
@@ -64,7 +74,7 @@ fun FirstScreen(onNavAction: () -> Unit) {
 
 
 @Composable
-fun SecondScreen(onNavAction: () -> Unit) {
+fun SecondScreen(name: String?, age: Int, onNavAction: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -72,7 +82,7 @@ fun SecondScreen(onNavAction: () -> Unit) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Text(text = "second page")
+        Text(text = "second page ---> $name---> $age")
         Button(onClick = { onNavAction.invoke() }) {
             Text(text = "go to third page")
         }
@@ -82,7 +92,7 @@ fun SecondScreen(onNavAction: () -> Unit) {
 
 
 @Composable
-fun ThirdScreen(onNavAction: () -> Unit) {
+fun ThirdScreen(carName: String?, onNavAction: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -90,7 +100,7 @@ fun ThirdScreen(onNavAction: () -> Unit) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Text(text = "third page")
+        Text(text = "third page ---> $carName")
         Button(onClick = { onNavAction.invoke() }) {
             Text(text = "go to first page")
         }
