@@ -10,10 +10,17 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
+import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
+import androidx.lifecycle.LifecycleOwner
+
+
+private const val TAG = "LifecycleTag"
 
 @Composable
-private fun ComposeLifecycleSample() {
+private fun ComposeLifecycleSample(lifecycleOwner: LifecycleOwner) {
 
     var countState by remember {
         mutableStateOf(0)
@@ -32,16 +39,52 @@ private fun ComposeLifecycleSample() {
             Text(text = "点我")
         }
     }
+
+    val lifecycle = lifecycleOwner.lifecycle
+    DisposableEffect(lifecycleOwner) {
+        val lifecycleObserver = LifecycleEventObserver { _, event ->
+            when (event) {
+                Lifecycle.Event.ON_START -> {
+                    Log.d(TAG, "ON_START perform ---> ")
+                }
+
+                Lifecycle.Event.ON_DESTROY -> {
+                    Log.d(TAG, "ON_DESTROY perform ---> ")
+                }
+
+                Lifecycle.Event.ON_CREATE -> {
+                    Log.d(TAG, "ON_CREATE perform ---> ")
+                }
+
+                Lifecycle.Event.ON_RESUME -> {
+                    Log.d(TAG, "ON_RESUME perform ---> ")
+                }
+
+                Lifecycle.Event.ON_STOP -> {
+                    Log.d(TAG, "ON_STOP perform ---> ")
+                }
+
+                else -> {
+
+                }
+            }
+        }
+        lifecycle.addObserver(lifecycleObserver)
+        onDispose {
+            lifecycle.removeObserver(lifecycleObserver)
+        }
+    }
+
 }
 
 @Preview
 @Composable
 fun ComposeLifecycleSamplePreview() {
-    ComposeLifecycleSample()
+    ComposeLifecycleSample(LocalLifecycleOwner.current)
 }
 
 @Composable
-fun LifecycleSampleOut() {
-    ComposeLifecycleSample()
+fun LifecycleSampleOut(lifecycleOwner: LifecycleOwner) {
+    ComposeLifecycleSample(lifecycleOwner)
 }
 

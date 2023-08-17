@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.LocalLifecycleOwner
 
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
@@ -58,7 +59,7 @@ class MainActivity : ComponentActivity() {
         setContent {
 //            MessageCard(name = "My Android")
             DQComposeTheme {
-                LifecycleSampleOut()
+                LifecycleSampleOut(this)
             }
         }
     }
