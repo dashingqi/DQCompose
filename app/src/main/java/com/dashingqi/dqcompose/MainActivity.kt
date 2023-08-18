@@ -59,7 +59,7 @@ class MainActivity : ComponentActivity() {
         setContent {
 //            MessageCard(name = "My Android")
             DQComposeTheme {
-                LifecycleSampleOut(this)
+                CompositionLocalSample()
             }
         }
     }
