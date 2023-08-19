@@ -29,6 +29,7 @@ import com.dashingqi.dqcompose.layout.ScaffoldSampleThree
 import com.dashingqi.dqcompose.layout.ScaffoldSampleTwo
 import com.dashingqi.dqcompose.lifecycle.LifecycleSampleOut
 import com.dashingqi.dqcompose.navigation.NavSample
+import com.dashingqi.dqcompose.permision.PermissionSample
 import com.dashingqi.dqcompose.ui.theme.DQComposeTheme
 import com.dashingqi.dqcompose.widget.DropDownMenuSample
 import com.dashingqi.dqcompose.widget.MyViewModel
@@ -60,7 +61,7 @@ class MainActivity : ComponentActivity() {
         setContent {
 //            MessageCard(name = "My Android")
             DQComposeTheme {
-                AnimationSample()
+                PermissionSample()
             }
         }
     }
