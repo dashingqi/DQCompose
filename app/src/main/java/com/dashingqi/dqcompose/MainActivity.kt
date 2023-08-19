@@ -21,6 +21,7 @@ import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.ViewModelProvider
+import com.dashingqi.dqcompose.animation.AnimationSample
 import com.dashingqi.dqcompose.layout.ScaffoldSample
 import com.dashingqi.dqcompose.layout.ScaffoldSampleOne
 import com.dashingqi.dqcompose.layout.ScaffoldSampleOut
@@ -59,7 +60,7 @@ class MainActivity : ComponentActivity() {
         setContent {
 //            MessageCard(name = "My Android")
             DQComposeTheme {
-                CompositionLocalSample()
+                AnimationSample()
             }
         }
     }
