@@ -31,7 +31,7 @@ private val AppBarHeight = 56.dp
 
 
 @Composable
-fun DQTopAppbar(content: @Composable () -> Unit) {
+fun DQTopAppbar(modifier: Modifier = Modifier,content: @Composable () -> Unit) {
     // 状态栏高度
     val statusBarHeightDP = with(LocalDensity.current) {
         LocalWindowInsets.current.statusBars.top.toDp()
@@ -46,7 +46,8 @@ fun DQTopAppbar(content: @Composable () -> Unit) {
             .background(Brush.linearGradient(listOf(Blue700, Blue200)))
             .fillMaxWidth()
             .height(AppBarHeight + statusBarHeightDP)
-            .padding(top = statusBarHeightDP),
+            .padding(top = statusBarHeightDP)
+            .then(modifier),
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically
     ) {
