@@ -1,12 +1,11 @@
 package com.dashingqi.dqcompose.ui.screen
 
 /**
- * @desc :
+ * @desc : 主框架
  * @author : zhangqi
  * @time : 2023/8/26 11:39
  */
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
@@ -26,6 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import com.dashingqi.dqcompose.model.entity.BottomNavigationItem
+import com.google.accompanist.insets.ProvideWindowInsets
 
 @Composable
 fun MainFrame() {
@@ -33,7 +33,7 @@ fun MainFrame() {
     val items by lazy {
         listOf(
             BottomNavigationItem(
-                title = "首页", icon = Icons.Default.Home
+                title = "学习", icon = Icons.Default.Home
             ), BottomNavigationItem(
                 title = "任务", icon = Icons.Default.DateRange
             ), BottomNavigationItem(
@@ -45,30 +45,39 @@ fun MainFrame() {
     var currentNavigationState by remember {
         mutableStateOf(0)
     }
-
-    Scaffold(bottomBar = {
-        BottomNavigation(backgroundColor = MaterialTheme.colors.surface) {
-            items.forEachIndexed { index, bottomNavigationItem ->
-                BottomNavigationItem(
-                    selected = currentNavigationState == index,
-                    onClick = {
-                        currentNavigationState = index
-                    },
-                    icon = {
-                        Icon(imageVector = bottomNavigationItem.icon,
-                            contentDescription = null)
-                    },
-                    label = {
-                        Text(text = bottomNavigationItem.title)
-                    },
-                    selectedContentColor = Color(0xFF149EE7),
-                    unselectedContentColor = Color(0xFF999999),
-                    alwaysShowLabel = false
-                )
+    ProvideWindowInsets {
+        Scaffold(bottomBar = {
+            BottomNavigation(
+                backgroundColor = MaterialTheme.colors.surface,
+                modifier = Modifier.navigationBarsPadding()
+            ) {
+                items.forEachIndexed { index, bottomNavigationItem ->
+                    BottomNavigationItem(
+                        selected = currentNavigationState == index,
+                        onClick = {
+                            currentNavigationState = index
+                        },
+                        icon = {
+                            Icon(
+                                imageVector = bottomNavigationItem.icon, contentDescription = null
+                            )
+                        },
+                        label = {
+                            Text(text = bottomNavigationItem.title)
+                        },
+                        selectedContentColor = Color(0xFF149EE7),
+                        unselectedContentColor = Color(0xFF999999),
+                        alwaysShowLabel = false
+                    )
+                }
+            }
+        }) {
+            when (currentNavigationState) {
+                0 -> StudyScreen()
+                1 -> TaskScreen()
+                2 -> MineScreen()
             }
         }
-    }) {
-        Text(text = "current bottom navigation index is $currentNavigationState")
     }
 }
 
