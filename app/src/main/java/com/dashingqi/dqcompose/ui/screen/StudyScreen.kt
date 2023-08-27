@@ -5,16 +5,19 @@ package com.dashingqi.dqcompose.ui.screen
  * @author : zhangqi
  * @time : 2023/8/26 12:53
  */
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
+import androidx.compose.material.LeadingIconTab
 import androidx.compose.material.Surface
 import androidx.compose.material.Tab
 import androidx.compose.material.TabRow
@@ -27,14 +30,19 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import coil.compose.AsyncImage
 import com.dashingqi.dqcompose.ui.components.DQTopAppbar
 import com.dashingqi.dqcompose.viewmodel.MainViewModel
+import com.google.accompanist.pager.ExperimentalPagerApi
+import com.google.accompanist.pager.HorizontalPager
 
+@OptIn(ExperimentalPagerApi::class)
 @Composable
 fun StudyScreen(vm: MainViewModel = viewModel()) {
     Column {
@@ -86,6 +94,41 @@ fun StudyScreen(vm: MainViewModel = viewModel()) {
                 }
             }
 
+        }
+
+        TabRow(selectedTabIndex = vm.typeIndex.value,
+            backgroundColor = Color.Transparent,
+            contentColor = Color(0xFF149EE7),
+            indicator = {},
+            divider = {}) {
+
+            vm.types.value.forEachIndexed { index, s ->
+                LeadingIconTab(selected = vm.typeIndex.value == index, onClick = {
+                    vm.updateTypeIndex(index)
+                }, selectedContentColor = Color(0x66149EE7), unselectedContentColor = Color(0xFF666666), text = {
+                    Text(text = s.title, modifier = Modifier.padding(vertical = 8.dp), fontSize = 16.sp)
+                }, icon = {
+                    Icon(imageVector = s.icon, contentDescription = null)
+                })
+            }
+        }
+
+        // 轮播图
+        HorizontalPager(
+            count = vm.bannerItems.size, itemSpacing = 8.dp, modifier = Modifier
+                .padding(horizontal = 8.dp)
+                .clip(
+                    RoundedCornerShape(8.dp)
+                )
+        ) {
+            AsyncImage(
+                model = vm.bannerItems[it].bannerImg,
+                null,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .aspectRatio(7 / 3f),
+                contentScale = ContentScale.Crop
+            )
         }
     }
 

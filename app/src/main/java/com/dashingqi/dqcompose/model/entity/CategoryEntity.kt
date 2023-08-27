@@ -5,4 +5,4 @@ package com.dashingqi.dqcompose.model.entity
  * @author : zhangqi
  * @time : 2023/8/26 22:43
  */
-data class Category(val title:String)
+data class CategoryEntity(val title:String)

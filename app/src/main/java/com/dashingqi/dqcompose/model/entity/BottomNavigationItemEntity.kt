@@ -7,7 +7,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
  * @author : zhangqi
  * @time : 2023/8/26 11:40
  */
-data class BottomNavigationItem(
+data class BottomNavigationItemEntity(
     /** 标题*/
     val title: String,
     /** 图标*/

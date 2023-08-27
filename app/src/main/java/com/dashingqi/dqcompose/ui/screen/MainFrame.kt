@@ -24,7 +24,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import com.dashingqi.dqcompose.model.entity.BottomNavigationItem
+import com.dashingqi.dqcompose.model.entity.BottomNavigationItemEntity
 import com.google.accompanist.insets.ProvideWindowInsets
 
 @Composable
@@ -32,11 +32,11 @@ fun MainFrame() {
 
     val items by lazy {
         listOf(
-            BottomNavigationItem(
+            BottomNavigationItemEntity(
                 title = "学习", icon = Icons.Default.Home
-            ), BottomNavigationItem(
+            ), BottomNavigationItemEntity(
                 title = "任务", icon = Icons.Default.DateRange
-            ), BottomNavigationItem(
+            ), BottomNavigationItemEntity(
                 title = "我的", icon = Icons.Default.Person
             )
         )
