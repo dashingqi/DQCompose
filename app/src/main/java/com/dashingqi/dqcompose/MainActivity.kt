@@ -11,6 +11,7 @@ import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.core.view.WindowCompat
+import com.dashingqi.dqcompose.tabpage.TabWithPager
 import com.dashingqi.dqcompose.ui.screen.MainFrame
 import com.dashingqi.dqcompose.ui.theme.DQComposeTheme
 
@@ -22,7 +23,7 @@ class MainActivity : ComponentActivity() {
 //        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
 //        // 处理不同机型状态栏颜色
 //        window.statusBarColor = Color.Transparent.value.toInt()
-        WindowCompat.setDecorFitsSystemWindows(window,false)
+        // WindowCompat.setDecorFitsSystemWindows(window, false)
 
         // 获取状态栏高度
         val resourceID = resources.getIdentifier("status_bar_height", "dimen", "android")
@@ -34,7 +35,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             DQComposeTheme {
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
-                    MainFrame()
+                    TabWithPager()
                 }
             }
         }
